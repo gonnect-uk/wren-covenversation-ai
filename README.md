@@ -50,39 +50,135 @@ http://localhost:3210
 
 [📚 Detailed Setup Guide](docs/lobechat.md) | [🛠️ Configuration Files](k8s/lobechat/)
 
-### 2. Wren AI
+### 2. Wren AI - Model-Agnostic Business Intelligence
 
 ## What is Wren AI?
 
-Wren AI is an advanced natural language to SQL conversion tool that revolutionizes database interactions. It allows users to:
+Wren AI is a revolutionary model-agnostic conversational AI platform that transforms business users into data analysts. It bridges the gap between natural language and data by:
 
-- Query databases using plain English questions
-- Automatically generate complex SQL queries
-- Understand database schema and relationships
-- Get instant query results with explanations
+#### 🎯 Core Capabilities
+- Converting natural language to SQL queries
+- Providing instant data insights and visualizations
+- Explaining complex data relationships
+- Generating business-ready reports
+
+#### 💡 Model Flexibility
+- Works with any LLM (GPT-4, Claude, Llama, etc.)
+- Adapts to specialized industry models
+- Supports custom fine-tuned models
+- Allows easy model switching without retraining
+
+#### 💼 Business Empowerment
+- Enables non-technical users to perform data analysis
+- Reduces dependency on data teams
+- Accelerates decision-making process
+- Democratizes data access across organization
+
+#### 📊 Enterprise Features
+- Role-based access control
+- Query audit trails
+- Data governance compliance
+- Custom business logic integration
 
 ### Key Features
 
 ```mermaid
 mindmap
   root((Wren AI))
-    Natural Language Processing
-      English to SQL
+    Model Agnostic Layer
+      LLM Integration
+        OpenAI Models
+        Anthropic Models
+        Open Source Models
+      Custom Models
+        Industry Specific
+        Fine-tuned Models
+        Specialized Tasks
+    Natural Language Engine
       Context Understanding
       Schema Awareness
-    Database Integration
-      PostgreSQL Support
-      Schema Analysis
-      Query Execution
-    AI Capabilities
-      GPT-4 Integration
-      Vector Embeddings
+      Business Logic
+    Data Intelligence
+      SQL Generation
       Query Optimization
-    User Experience
-      Web Interface
-      Query History
-      Result Visualization
+      Result Analysis
+      Visualization
+    Enterprise Features
+      Access Control
+      Audit Logging
+      Compliance
+      Team Collaboration
 ```
+
+### Model-Agnostic Benefits
+
+```mermaid
+flowchart LR
+    A[Business User] --> B[Wren AI]
+    B --> C1[OpenAI Models]
+    B --> C2[Anthropic Models]
+    B --> C3[Open Source Models]
+    B --> C4[Custom Models]
+    
+    subgraph Results
+    D1[Data Analysis]
+    D2[Visualizations]
+    D3[Reports]
+    D4[Insights]
+    end
+    
+    C1 & C2 & C3 & C4 --> Results
+```
+
+#### 1. Cost Flexibility
+- Choose cost-effective models for simple queries
+- Use premium models for complex analysis
+- Deploy local models for high-volume tasks
+- Mix and match based on needs
+
+#### 2. Future Proofing
+- Easily adopt new AI models as they emerge
+- No vendor lock-in
+- Continuous performance improvement
+- Adapt to changing requirements
+
+#### 3. Customization
+- Industry-specific model integration
+- Custom fine-tuning options
+- Specialized task optimization
+- Business logic incorporation
+
+#### 4. Compliance & Control
+- Data privacy with local models
+- Audit trail across models
+- Consistent governance
+- Risk management
+
+### Business Impact
+
+1. **Faster Decision Making**
+   - Instant data analysis
+   - Real-time insights
+   - Self-service analytics
+   - Reduced bottlenecks
+
+2. **Cost Reduction**
+   - Optimized model usage
+   - Reduced dependency on specialists
+   - Automated report generation
+   - Efficient resource utilization
+
+3. **Team Empowerment**
+   - Non-technical user enablement
+   - Cross-functional collaboration
+   - Knowledge democratization
+   - Skill development
+
+4. **Innovation Acceleration**
+   - Rapid prototyping
+   - Data-driven experimentation
+   - Quick hypothesis testing
+   - Agile decision making
 
 ### Conversational AI Capabilities
 
