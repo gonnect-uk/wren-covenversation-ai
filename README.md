@@ -3,13 +3,35 @@
 ## Deployed Applications
 
 ### 1. LobeChat
-An advanced AI chat interface powered by OpenAI, featuring:
-- File upload support
-- Chat history persistence
-- Image generation
-- Multi-model support
+An advanced AI chat interface powered by OpenAI, deployed on GKE with PostgreSQL backend.
 
-[📚 LobeChat Setup Guide](docs/lobechat.md)
+```mermaid
+graph TD
+    A[External Traffic] --> B[LoadBalancer]
+    B --> C[LobeChat Pod]
+    C --> D[PostgreSQL]
+    C --> E[OpenAI API]
+    D --> F[Persistent Storage]
+```
+
+#### Features
+- 💬 AI Chat with GPT-4 and other models
+- 📁 File upload & sharing (images, PDFs, text)
+- 💾 Persistent chat history with PostgreSQL
+- 🎨 Image generation capabilities
+- 🔒 Secure access with authentication
+
+#### Quick Access
+```bash
+# Port forward to access LobeChat
+kubectl port-forward -n lobechat svc/lobechat 3210:80
+
+# Access URL
+http://localhost:3210
+# Access Code: wren2024
+```
+
+[📚 Detailed Setup Guide](docs/lobechat.md) | [🛠️ Configuration Files](k8s/lobechat/)
 
 ### 2. Wren AI
 

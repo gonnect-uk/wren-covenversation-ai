@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lobechat
+  namespace: lobechat
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lobechat
+  template:
+    metadata:
+      labels:
+        app: lobechat
+    spec:
+      containers:
+      - name: lobechat
+        image: lobehub/lobe-chat:latest
+        imagePullPolicy: Always
+        ports:
+        - name: http
+          containerPort: 3210
+        env:
+        - name: OPENAI_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: openai-api-key
+              key: LLM_OPENAI_API_KEY
+        - name: OPENAI_API_ENDPOINT
+          value: "https://api.openai.com/v1"
+        - name: ACCESS_CODE
+          value: "wren2024"
+        - name: DATABASE_URL
+          value: "postgresql://lobechat:lobechat123@postgres:5432/lobechat"
+        - name: ENABLE_OAUTH_SSO
+          value: "false"
+        - name: DEPLOYMENT_MODE
+          value: "server"
+        - name: DEFAULT_AGENT_CONFIG_FILE
+          value: "/app/config/agent.json"
+        - name: NEXTAUTH_URL
+          value: "http://localhost:3210"
+        - name: NEXTAUTH_SECRET
+          value: "your-nextauth-secret-key"
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "256Mi"
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
+        volumeMounts:
+        - name: agent-config
+          mountPath: /app/config
+      volumes:
+      - name: agent-config
+        configMap:
+          name: agent-config
