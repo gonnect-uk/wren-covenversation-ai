@@ -1,5 +1,18 @@
 # Wren AI on GKE Autopilot
 
+## Deployed Applications
+
+### 1. LobeChat
+An advanced AI chat interface powered by OpenAI, featuring:
+- File upload support
+- Chat history persistence
+- Image generation
+- Multi-model support
+
+[📚 LobeChat Setup Guide](docs/lobechat.md)
+
+### 2. Wren AI
+
 ## What is Wren AI?
 
 Wren AI is an advanced natural language to SQL conversion tool that revolutionizes database interactions. It allows users to:
