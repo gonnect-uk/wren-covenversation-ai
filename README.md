@@ -353,17 +353,19 @@ graph TB
 
 ```mermaid
 graph TB
-    subgraph External["External Access"]    
-        LB["LoadBalancer/Ingress"]    
-        NAT["Cloud NAT"]    
+    subgraph External["External Access"]
+        LB["LoadBalancer|Ingress"]
+        NAT["Cloud NAT"]
     end
     
-    subgraph VPC["VPC: gke-vpc"]    
-        subgraph Subnet["Subnet: gke-subnet<br/>172.16.0.0/20"]    
-            subgraph GKE["GKE Cluster"]    
-                Master["Master<br/>172.19.0.0/28"]    
-                Pods["Pods<br/>172.18.0.0/16"]    
-                Services["Services<br/>172.17.0.0/20"]    
+    subgraph Network["Network Layer"]
+        subgraph VPC["VPC: gke-vpc"]
+            subgraph Subnet["Subnet: gke-subnet|172.16.0.0/20"]
+                subgraph GKE["GKE Cluster"]
+                    Master["Master|172.19.0.0/28"]
+                    Pods["Pods|172.18.0.0/16"]
+                    Services["Services|172.17.0.0/20"]
+                end
             end
         end
     end
