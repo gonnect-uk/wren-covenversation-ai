@@ -237,25 +237,25 @@ This repository provides end-to-end instructions for deploying Wren AI on Google
 
 ```mermaid
 graph TB
-    subgraph GKE["GKE Autopilot Cluster (Private Cluster)"]
-        subgraph FrontEnd["Frontend Layer"]    
-            UI["Wren UI Service<br/>Port: 3000<br/>Image: wren-ui:0.9.2"]
+    subgraph GKE["GKE Autopilot Cluster"]
+        subgraph Frontend["Frontend Layer"]
+            UI["Wren UI Service|Port: 3000|Image: wren-ui:0.9.2"]
         end
         
-        subgraph AI_Layer["AI Processing Layer"]
-            AI["Wren AI Service<br/>Port: 5555<br/>Image: wren-ai-service:0.12.1"]
-            Engine["Wren Engine<br/>Port: 8080<br/>Image: wren-engine:0.9.0"]
-            Ibis["Ibis Server<br/>Port: 8000<br/>Image: ibis-server"]
+        subgraph AILayer["AI Processing Layer"]
+            AI["Wren AI Service|Port: 5555|Image: wren-ai-service:0.12.1"]
+            Engine["Wren Engine|Port: 8080|Image: wren-engine:0.9.0"]
+            Ibis["Ibis Server|Port: 8000|Image: ibis-server"]
         end
         
-        subgraph Storage["Data Layer"]
-            PG[("PostgreSQL<br/>Port: 5432<br/>PVC: wren-postgresql-pvc")]
-            Qdrant[("Qdrant Vector DB<br/>Port: 6333<br/>PVC: wren-qdrant-pvc")]
+        subgraph DataLayer["Data Layer"]
+            PG[("PostgreSQL|Port: 5432|PVC: postgresql-pvc")]
+            Qdrant[("Qdrant Vector DB|Port: 6333|PVC: qdrant-pvc")]
         end
         
-        subgraph Config["Configuration"]
-            Secrets["Kubernetes Secrets<br/>- OpenAI Keys<br/>- DB Credentials"]    
-            ConfigMaps["ConfigMaps<br/>- AI Models<br/>- Service Endpoints"]    
+        subgraph ConfigLayer["Configuration"]
+            Secrets["Kubernetes Secrets|OpenAI Keys|DB Credentials"]
+            ConfigMaps["ConfigMaps|AI Models|Service Endpoints"]
         end
     end
     
@@ -266,10 +266,10 @@ graph TB
     Engine --> PG
     AI --> Qdrant
     
-    Secrets -.-> AI
-    Secrets -.-> Engine
-    ConfigMaps -.-> AI
-    ConfigMaps -.-> Engine
+    Secrets -.- AI
+    Secrets -.- Engine
+    ConfigMaps -.- AI
+    ConfigMaps -.- Engine
 ```
 
 ### Component Details
