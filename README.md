@@ -405,25 +405,33 @@ sequenceDiagram
 
 ```mermaid
 graph TB
-    subgraph Security["Security Components"]    
-        subgraph NetworkSec["Network Security"]    
-            Private["Private GKE Cluster"]    
-            NAT["Cloud NAT for Outbound"]    
-            Master["Private Master 172.19.0.0/28"]    
+    subgraph SecurityStack["Security Components"]
+        subgraph NetworkSecurity["Network Layer"]
+            Private["Private|GKE Cluster"]
+            NAT["Cloud|NAT"]
+            Master["Master|172.19.0.0/28"]
         end
         
-        subgraph K8sSec["Kubernetes Security"]    
-            NS["Dedicated Namespace"]    
-            Secrets["K8s Secrets"]    
-            RBAC["RBAC Policies"]    
+        subgraph K8sSecurity["Kubernetes Layer"]
+            NS["Namespace|Control"]
+            Secrets["Secret|Management"]
+            RBAC["RBAC|Policies"]
         end
         
-        subgraph DataSec["Data Security"]    
-            PVC["Persistent Volumes"]    
-            APIKeys["API Key Management"]    
-            DBCreds["Database Credentials"]    
+        subgraph DataSecurity["Data Layer"]
+            PVC["Volume|Encryption"]
+            APIKeys["API|Security"]
+            DBCreds["Database|Access"]
         end
     end
+
+    Private --> NS
+    NS --> Secrets
+    Secrets --> APIKeys
+    Secrets --> DBCreds
+    NAT --> Private
+    Master --> RBAC
+    RBAC --> PVC
 ```
 
 #### Security Components
