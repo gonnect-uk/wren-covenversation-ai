@@ -1,4 +1,4 @@
-# GenAI Apps - Conversation AI & Generic Chat on GEK
+# GenAI Apps - Conversation AI & Generic Chat on GKE
 ## Deployed Applications
 
 ### 1. LobeChat
