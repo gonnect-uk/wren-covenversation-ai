@@ -1,5 +1,4 @@
-# Wren AI on GKE Autopilot
-
+# GenAI Apps - Conversation AI & Generic Chat on GEK
 ## Deployed Applications
 
 ### 1. LobeChat
