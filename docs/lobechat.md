@@ -1,7 +1,55 @@
 # LobeChat on GKE
 
 ## Overview
-LobeChat is deployed on GKE in server mode with PostgreSQL backend for full functionality including file uploads, chat history persistence, and image generation capabilities.
+LobeChat is a versatile AI chat platform deployed on GKE, offering enterprise-grade features with flexible model choices to optimize both capability and cost.
+
+### Business Value
+- **Cost Optimization**: Choose between premium APIs (OpenAI, Anthropic) and cost-effective open-source models
+- **Vendor Independence**: Avoid lock-in by easily switching between AI providers
+- **Privacy Control**: Use local models for sensitive data
+- **Team Collaboration**: Share prompts, files, and chat history
+- **Enterprise Ready**: Secure authentication, audit logs, and data persistence
+
+### Supported Models
+1. **Premium APIs**
+   - OpenAI: GPT-4, GPT-3.5-turbo
+   - Anthropic: Claude 2, Claude Instant
+   - Azure OpenAI Service
+
+2. **Open Source Models**
+   - Llama 2 (Meta)
+   - Mistral
+   - Custom model deployments
+
+3. **Specialized Models**
+   - DALL-E (image generation)
+   - Stable Diffusion (local image generation)
+   - Custom fine-tuned models
+
+### Use Cases
+1. **Development Teams**
+   - Code review and explanation
+   - API documentation generation
+   - Debugging assistance
+   - Architecture discussions
+
+2. **Business Analysis**
+   - Data interpretation
+   - Report generation
+   - Market research
+   - Document summarization
+
+3. **Content Creation**
+   - Marketing copy
+   - Documentation
+   - Image generation
+   - Content editing
+
+4. **Customer Support**
+   - Query analysis
+   - Response drafting
+   - Knowledge base creation
+   - Training material generation
 
 ## Architecture
 
@@ -71,6 +119,63 @@ kubectl port-forward -n lobechat svc/lobechat 3210:80
 
 5. Open in browser: http://localhost:3210
    - Use access code: wren2024
+
+## Model Configuration
+
+### Using Different AI Providers
+
+1. **OpenAI Configuration**
+```yaml
+env:
+- name: OPENAI_API_KEY
+  valueFrom:
+    secretKeyRef:
+      name: openai-api-key
+      key: LLM_OPENAI_API_KEY
+- name: OPENAI_API_ENDPOINT
+  value: "https://api.openai.com/v1"
+```
+
+2. **Azure OpenAI Configuration**
+```yaml
+env:
+- name: AZURE_API_KEY
+  valueFrom:
+    secretKeyRef:
+      name: azure-api-key
+      key: key
+- name: AZURE_API_ENDPOINT
+  value: "https://your-resource.openai.azure.com"
+```
+
+3. **Anthropic Configuration**
+```yaml
+env:
+- name: ANTHROPIC_API_KEY
+  valueFrom:
+    secretKeyRef:
+      name: anthropic-api-key
+      key: key
+```
+
+4. **Local Model Configuration**
+```yaml
+env:
+- name: LOCAL_MODEL_ENDPOINT
+  value: "http://your-model-service:8080"
+- name: LOCAL_MODEL_TYPE
+  value: "llama2" # or mistral, custom
+```
+
+### Cost Optimization Tips
+1. Use tiered approach:
+   - GPT-3.5 for general queries (cheaper)
+   - GPT-4 for complex tasks (premium)
+   - Local models for repetitive tasks
+
+2. Implement token quotas per user/team
+
+3. Monitor usage patterns and adjust model selection
 
 ## Configuration Files
 

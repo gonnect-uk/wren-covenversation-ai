@@ -2,7 +2,25 @@
 ## Deployed Applications
 
 ### 1. LobeChat
-An advanced AI chat interface powered by OpenAI, deployed on GKE with PostgreSQL backend.
+A powerful, cost-effective AI chat platform deployed on GKE. Supports multiple AI providers including:
+- OpenAI (GPT-4, GPT-3.5)
+- Anthropic (Claude)
+- Local Models (Llama, Mistral)
+- Azure OpenAI
+- Custom Model APIs
+
+Perfect for teams looking to leverage AI while maintaining flexibility and cost control.
+
+#### Cost Comparison (per 1M tokens)
+| Model | Cost (Input) | Cost (Output) | Best For |
+|-------|-------------|---------------|----------|
+| GPT-4 | $30 | $60 | Complex reasoning |
+| GPT-3.5 | $0.50 | $1.50 | General tasks |
+| Claude | $11.02 | $32.68 | Long content |
+| Llama 2 | Free* | Free* | High volume tasks |
+| Mistral | Free* | Free* | Efficient tasks |
+
+*Requires compute resources for hosting
 
 ```mermaid
 graph TD
