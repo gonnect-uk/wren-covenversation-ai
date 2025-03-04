@@ -449,26 +449,30 @@ graph TB
 ### Monitoring and Logging
 
 ```mermaid
-graph LR
-    subgraph Observability["Observability Stack"]    
-        subgraph Monitoring["Monitoring"]    
-            CPU["CPU Usage"]    
-            Memory["Memory Usage"]    
-            Network["Network I/O"]    
+graph TB
+    subgraph ObservabilityStack["Observability Stack"]
+        subgraph MonitoringSection["Resource Monitoring"]
+            CPU["CPU|Usage Trends"]
+            Memory["Memory|Utilization"]
+            Network["Network|Throughput"]
         end
         
-        subgraph Logging["Logging"]    
-            AppLogs["Application Logs"]    
-            K8sLogs["Kubernetes Events"]    
-            AuditLogs["Audit Logs"]    
+        subgraph LoggingSection["System Logging"]
+            AppLogs["App|Logs"]
+            K8sLogs["K8s|Events"]
+            AuditLogs["Audit|Trails"]
         end
         
-        subgraph Metrics["Key Metrics"]    
-            QPS["Queries/Second"]    
-            Latency["Response Time"]    
-            Success["Success Rate"]    
+        subgraph MetricsSection["Performance Metrics"]
+            QPS["QPS|Throughput"]
+            Latency["API|Response"]
+            Success["Success|Rate"]
         end
     end
+
+    CPU --> Latency
+    Memory --> QPS
+    Network --> Success
 ```
 
 #### Monitoring Components
