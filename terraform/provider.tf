@@ -8,6 +8,6 @@ terraform {
 }
 
 provider "google" {
-  project = "gen-ai-app-poc-efe5"
+  project = "add_project_id"
   region  = "us-central1"
 }
