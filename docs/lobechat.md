@@ -397,6 +397,66 @@ kubectl get svc -n lobechat
 # Port forward for local access
 kubectl port-forward -n lobechat svc/lobechat 3210:80
 ```
+
+## Cleanup
+
+### Before You Begin
+- Save any important chat history or files
+- Document any custom configurations
+- Notify team members if it's a shared instance
+
+### Step-by-Step Cleanup
+
+1. **Stop Active Sessions**
+```bash
+# List and kill any port-forwarding sessions
+pkill -f "kubectl port-forward.*lobechat"
+```
+
+2. **Delete Kubernetes Resources**
+```bash
+# Delete all LobeChat resources
+kubectl delete -f k8s/lobechat/
+
+# Verify resources are being deleted
+kubectl get all -n lobechat
+```
+
+3. **Delete Persistent Data**
+```bash
+# Delete PVC (this will delete all persistent data)
+kubectl delete pvc -n lobechat --all
+
+# Verify PVC deletion
+kubectl get pvc -n lobechat
+```
+
+4. **Delete Namespace**
+```bash
+# This will delete everything in the namespace
+kubectl delete namespace lobechat
+
+# Verify namespace is gone
+kubectl get namespace lobechat
+```
+
+5. **Delete Secrets**
+```bash
+# Delete OpenAI API key
+kubectl delete secret openai-api-key -n wren
+```
+
+### Quick Cleanup (All-in-One)
+```bash
+# Delete everything in one command
+kubectl delete namespace lobechat && kubectl delete secret openai-api-key -n wren
+```
+
+> ⚠️ **Warning**
+> - This will permanently delete all data
+> - Persistent volumes will be deleted
+> - All configurations will be lost
+> - Make sure to backup any important information
    - Llama 2 (Meta)
    - Mistral
    - Custom model deployments

@@ -264,6 +264,28 @@ flowchart LR
    - Quick hypothesis testing
    - Agile decision making
 
+## Cleanup
+
+### Option 1: Delete Individual Components
+```bash
+# 1. Delete LobeChat resources
+kubectl delete -f k8s/lobechat/
+
+# 2. Delete namespace (this deletes everything in the namespace)
+kubectl delete namespace lobechat
+
+# 3. Delete secrets
+kubectl delete secret openai-api-key -n wren
+```
+
+### Option 2: Quick Cleanup (Deletes Everything)
+```bash
+# Delete all resources in one go
+kubectl delete namespace lobechat && kubectl delete secret openai-api-key -n wren
+```
+
+> ⚠️ Warning: This will permanently delete all data. Make sure to backup any important information.
+
 ### Conversational AI Capabilities
 
 ```mermaid
